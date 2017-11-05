@@ -10,4 +10,11 @@ RUN apt-get update -qq \
 RUN /usr/bin/pip3 install http://download.pytorch.org/whl/cu80/torch-0.2.0.post3-cp35-cp35m-manylinux1_x86_64.whl \
   && /usr/bin/pip3 install torchvision \
   && /usr/bin/pip3 install matplotlib ipython \
-  && /usr/bin/pip3 install plotnine plydata
+  && /usr/bin/pip3 install plotnine plydata \
+  && /usr/bin/pip3 install notebook yapf
+
+EXPOSE 8888
+
+WORKDIR "/code"
+
+CMD ["/usr/bin/jupyter", "notebook", "--ip", "0.0.0.0", "--no-browser", "--allow-root"]
