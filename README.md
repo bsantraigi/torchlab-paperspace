@@ -1,5 +1,5 @@
 # Dockerized Pytorch 0.2.0 (personal use)
-version 0.2.0.post1
+version 0.2.0.post3
 
 To run it:
 
