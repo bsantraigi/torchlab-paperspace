@@ -12,10 +12,10 @@ RUN /usr/bin/pip3 install http://download.pytorch.org/whl/cu80/torch-0.2.0.post3
   && /usr/bin/pip3 install scikit-learn \
   && /usr/bin/pip3 install matplotlib ipython \
   && /usr/bin/pip3 install plotnine plydata \
-  && /usr/bin/pip3 install notebook yapf
+  && /usr/bin/pip3 install notebook yapf \
+  && /usr/bin/pip3 install jupyterlab \
+  && /usr/local/bin/jupyter serverextension enable --py jupyterlab --sys-prefix
 
 EXPOSE 8888
 
-WORKDIR "/code"
-
-CMD ["/usr/bin/jupyter", "notebook", "--ip", "0.0.0.0", "--no-browser", "--allow-root"]
+CMD ["/usr/local/bin/jupyter", "lab", "--ip", "0.0.0.0", "--no-browser", "--allow-root"]
