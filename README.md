@@ -1,7 +1,7 @@
 # Dockerized Pytorch 0.2.0 (personal use)
 version 0.2.0.post3
 
-Includes scikit, pytorch, jupyterlab, ...
+Includes scikit, xgboost, pytorch, jupyterlab, ...
 
 To run it:
 
