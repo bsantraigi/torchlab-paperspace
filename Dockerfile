@@ -24,12 +24,14 @@ RUN /usr/bin/pip3 install \
       torchvision \
       #
       # scikit & classics
-      scikit-learn xgboost \
+      pandas plydata \
+      scikit-learn scikit-image \
+      xgboost \
       hyperopt tpot \
       #
       # graphics
       matplotlib seaborn\
-      plotnine plydata \
+      plotnine \
       #
       # interactivity
       notebook yapf \
