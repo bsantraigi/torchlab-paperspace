@@ -20,7 +20,7 @@ RUN apt-get update -qq \
 RUN /usr/bin/pip3 install \
       #
       # pytorch
-      http://download.pytorch.org/whl/cu80/torch-0.3.0.post4-cp35-cp35m-linux_x86_64.whl \
+      http://download.pytorch.org/whl/cu91/torch-0.3.1-cp35-cp35m-linux_x86_64.whl \
       torchvision \
       #
       # scikit & classics
