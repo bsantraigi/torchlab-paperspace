@@ -1,4 +1,4 @@
-# Dockerized {pytorch 0.3.1.post2 & friends} + CUDA 9.1 + cuDNN 7 (personal use)
+# Dockerized {pytorch 0.4.0 & friends} + CUDA 9.1 + cuDNN 7 (personal use)
 
 Also includes scikit, xgboost, pytorch, jupyterlab, ...
 
