@@ -22,6 +22,8 @@ RUN /usr/bin/pip3 install \
       # pytorch
       torch \
       torchvision \
+      # tensorflow
+      tensorflow \
       #
       # scikit & classics
       pandas plydata \
