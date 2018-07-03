@@ -2,10 +2,11 @@ FROM gw000/debian-cuda
 MAINTAINER bosr <romain.bossart@fastmail.com>
 
 RUN apt-get update -qq \
-  && apt-get upgrade -y \
+  && apt-get install -y apt-utils \
+  && apt-get upgrade -y
   #
   # nodejs
-  && apt-get install -y curl \
+RUN apt-get install -y curl \
   && curl -sL https://deb.nodesource.com/setup_9.x | bash - \
   && apt-get install -y nodejs \
   #
