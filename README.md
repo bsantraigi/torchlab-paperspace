@@ -1,8 +1,21 @@
-# Dockerized {pytorch 0.4.0 & friends} + CUDA 9.1 + cuDNN 7.1 (personal use)
+# {PyTorch 1.0.0dev & friends} + CUDA 9.2 + cuDNN 7.1.4
+## Purpose
+Get a Jupyterlab up and running in seconds for interactive exploration (hence the data wrangling and visualization packages).
 
-Also includes scikit, xgboost, pytorch, jupyterlab, tf 1.8, ...
+## Included packages
+Included packages (see `Dockerfile` for the full list):
+  - miniconda3 w/ python 3.6
+  - PyTorch 1.0.0dev-20181007, torchvision
+  - tensorboardX
+  - pandas, scipy
+  - scikit-learn, scikit-image
+  - xgboost,
+  - jupyterlab
+  - tf 1.11, tensorboard
+  - ...
 
-To run it:
+## Usage
+If you do not have `nvidia-docker` installed:
 
     docker run --rm \
         $(ls /dev/nvidia* | xargs -I{} echo '--device={}') \
@@ -13,18 +26,25 @@ To run it:
 
 or using `nvidia-docker`
 
-    nvidia-docker -it --rm \
+    nvidia-docker run --rm \
         -v ${PWD}/code:/code \
         -p 8888:8888 \
-        bosr/pytorch \
+        bosr/pytorch
             /usr/local/bin/jupyter lab --no-browser --ip 0.0.0.0 --allow-root
 
-If you run this container on debian, installing nvidia-docker is currently painfull, so you could also define a `nvidia-docker` shell function that looks like the following:
+Note: on debian, installing `nvidia-docker` is currently painful, so what I recommend is defining an executable script in `/usr/local/bin/nvidia-docker`:
 
-    function nvidia-docker() {
-        docker run \
-            $(ls /dev/nvidia* | xargs -I{} echo '--device={}') \
-            $(ls /usr/lib/x86_64-linux-gnu/{libcuda,libnvidia}* | xargs -I{} echo '-v {}:{}:ro') \
-            -e CUDA_VISIBLE_DEVICES=0 \
-            $@
-    }
+    #! /usr/bin/env bash
+
+    /usr/bin/docker $1 \
+        $(ls /dev/nvidia* | xargs -I{} echo '--device={}') \
+        $(ls /usr/lib/x86_64-linux-gnu/{libcuda,libnvidia}* | xargs -I{} echo '-v {}:{}:ro') \
+        -e CUDA_VISIBLE_DEVICES=0 \
+        ${@:2}
+
+and run it as shown above.
+
+## Details
+Miniconda3 is installed in `/usr/local/miniconda`. When the container is started, a Jupyterlab is launched and exposed on the standard port 8888.
+
+As a personal preference, I save the model coefficients and dump the logs in `/output`.
