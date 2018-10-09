@@ -59,7 +59,8 @@ RUN \
   && conda install -y -c pytorch \
     pytorch-nightly cuda92 torchvision \
   #
-  && pip install plydata tensorboardX \
+  && pip install plydata \
+    tensorboardX torchsummary \
   #
   #
   && jupyter serverextension enable --py jupyterlab --sys-prefix \

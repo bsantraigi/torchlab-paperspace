@@ -5,8 +5,8 @@ Get a Jupyterlab up and running in seconds for interactive exploration (hence th
 ## Included packages
 Included packages (see `Dockerfile` for the full list):
   - miniconda3 w/ python 3.6
-  - PyTorch 1.0.0dev-20181007, torchvision
-  - tensorboardX
+  - PyTorch 1.0.0dev-20181009
+  - torchvision, torchsummary, tensorboardX
   - pandas, scipy
   - scikit-learn, scikit-image
   - xgboost,
