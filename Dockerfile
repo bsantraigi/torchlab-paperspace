@@ -60,7 +60,7 @@ RUN \
     pytorch-nightly cuda92 torchvision \
   #
   && pip install plydata \
-    tensorboardX torchsummary \
+    tensorboardX torchsummary torchtext \
   #
   #
   && jupyter serverextension enable --py jupyterlab --sys-prefix \
