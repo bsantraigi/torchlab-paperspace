@@ -21,12 +21,13 @@ If you do not have `nvidia-docker` installed:
         $(ls /dev/nvidia* | xargs -I{} echo '--device={}') \
         $(ls /usr/lib/x86_64-linux-gnu/{libcuda,libnvidia}* | xargs -I{} echo '-v {}:{}:ro') \
         -e CUDA_VISIBLE_DEVICES=0 \
+        --ipc=host \
         -v code:/code
         bosr/pytorch
 
 or using `nvidia-docker`
 
-    nvidia-docker run --rm \
+    nvidia-docker run --rm --ipc=host \
         -v ${PWD}/code:/code \
         -p 8888:8888 \
         bosr/pytorch
@@ -48,3 +49,5 @@ and run it as shown above.
 Miniconda3 is installed in `/usr/local/miniconda`. When the container is started, a Jupyterlab is launched and exposed on the standard port 8888.
 
 As a personal preference, I save the model coefficients and dump the logs in `/output`.
+
+The reason for the `--ipc=host` option is given [here](https://github.com/pytorch/pytorch/issues/1158#issuecomment-290771026).
