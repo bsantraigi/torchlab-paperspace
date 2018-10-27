@@ -48,6 +48,7 @@ RUN \
   && python -c \"import nltk; nltk.download('stopwords')\" \
   && conda install -y -c conda-forge \
     #
+    tensorboardx \
     hyperopt \
     plotnine \
     # py36 only
@@ -60,7 +61,7 @@ RUN \
     pytorch-nightly cuda92 torchvision \
   #
   && pip install plydata \
-    tensorboardX torchsummary torchtext \
+    torchsummary torchtext \
   #
   #
   && jupyter serverextension enable --py jupyterlab --sys-prefix \
