@@ -1,21 +1,17 @@
 FROM debian:jessie
 MAINTAINER bosr <romain.bossart@fastmail.com>
 
-RUN apt update -qq \
-  && apt install -y apt-utils \
-  && apt upgrade -y \
-  #
-  && apt install -y curl \
-  # nodejs for jupyterlab
-  && curl -sL https://deb.nodesource.com/setup_9.x | bash - \
-  && apt install -y nodejs \
+RUN apt-get update -qq \
+  && apt-get install -y apt-utils \
+  && apt-get upgrade -y \
   #
   # python
-  # && apt install -y python3-pip python3-tk \
-  && apt install -y build-essential   # gcc for xgboost \
+  # && apt-get install -y python3-pip python3-tk \
+  && apt-get install -y curl \
+      build-essential   # gcc for xgboost \
   #
   # cleanup
-  && apt clean \
+  && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
 # Miniconda
@@ -47,6 +43,7 @@ RUN \
     #
   && python -c \"import nltk; nltk.download('stopwords')\" \
   && conda install -y -c conda-forge \
+    nodejs \
     #
     tensorboardx \
     hyperopt \
