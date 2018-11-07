@@ -59,6 +59,7 @@ RUN \
   #
   && pip install plydata \
     torchsummary torchtext \
+    sacred \
   #
   #
   && jupyter serverextension enable --py jupyterlab --sys-prefix \
