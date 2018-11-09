@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:stretch
 MAINTAINER bosr <romain.bossart@fastmail.com>
 
 RUN apt-get update -qq \
@@ -13,6 +13,10 @@ RUN apt-get update -qq \
   # cleanup
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
+
+
+COPY install-python-packages.sh .
+
 
 # Miniconda
 RUN \
@@ -29,37 +33,7 @@ RUN \
   && source activate myenv \
   #
   #
-  && conda install -y \
-    cython numpy scipy \
-    pandas \
-    scikit-learn scikit-image \
-    nltk \
-    tensorflow-gpu tensorboard \
-    #
-    jupyterlab ipywidgets \
-    tqdm \
-    #
-    matplotlib seaborn \
-    #
-  && python -c \"import nltk; nltk.download('stopwords')\" \
-  && conda install -y -c conda-forge \
-    nodejs \
-    #
-    tensorboardx \
-    hyperopt \
-    plotnine \
-    # py36 only
-    xgboost \
-    tpot \
-    #
-    #
-    # torch
-  && conda install -y -c pytorch \
-    pytorch-nightly cuda92 torchvision \
-  #
-  && pip install plydata \
-    torchsummary torchtext \
-    sacred \
+  && source install-python-packages.sh \
   #
   #
   && jupyter serverextension enable --py jupyterlab --sys-prefix \
