@@ -10,7 +10,6 @@ conda install -y \
 	tensorflow-gpu tensorboard \
 	\
 	jupyterlab ipywidgets \
-	tqdm \
 	\
 	matplotlib seaborn \
 
@@ -38,4 +37,8 @@ conda install -y -c pytorch \
 #
 pip install plydata \
 	torchsummary torchtext \
-	sacred
+	sacred \
+	\
+	tqdm \
+	\
+	python-language-server \
