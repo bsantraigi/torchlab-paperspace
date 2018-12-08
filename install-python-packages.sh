@@ -30,7 +30,6 @@ conda install -y -c conda-forge \
 
 # torch
 conda install -y -c pytorch \
-	pytorch-nightly cuda92 \
 	torchvision ignite \
 
 

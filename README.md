@@ -1,4 +1,4 @@
-# {PyTorch 1.0.0dev & friends} + CUDA 9.2 + cuDNN 7.1.4
+# {PyTorch 1.0 & friends} + CUDA 9.2 + cuDNN 7.1.4
 ## Purpose
 Get a Jupyterlab up and running in seconds for interactive exploration (hence the data wrangling and visualization packages).
 
