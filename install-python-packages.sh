@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -euxo pipefail
 
-
 conda install -y \
 	cython numpy scipy \
 	pandas \
@@ -20,6 +19,7 @@ python -c "import nltk; nltk.download('stopwords')"
 # xgboost & tpot currently require py36
 conda install -y -c conda-forge \
 	nodejs \
+	jupyter_contrib_nbextensions \
 	\
 	tensorboardx \
 	hyperopt \
@@ -32,6 +32,9 @@ conda install -y -c conda-forge \
 conda install -y -c pytorch \
 	torchvision ignite \
 
+# fastai
+conda install -y -c fastai \
+	fastai
 
 #
 pip install plydata \

@@ -1,4 +1,4 @@
-# {PyTorch 1.0 & friends} + CUDA 9.2 + cuDNN 7.1.4
+# {PyTorch 1.0 & fastai & friends} + CUDA 9.2 + cuDNN 7.1.4
 ## Purpose
 Get a Jupyterlab up and running in seconds for interactive exploration (hence the data wrangling and visualization packages).
 
@@ -7,6 +7,7 @@ Included packages (see `Dockerfile` for the full list):
   - miniconda3 w/ python 3.6
   - PyTorch 1.0.0dev-20181009
   - torchvision, torchsummary, tensorboardX
+  - fastai
   - pandas, scipy
   - scikit-learn, scikit-image
   - xgboost,
