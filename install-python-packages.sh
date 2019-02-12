@@ -20,6 +20,7 @@ python -c "import nltk; nltk.download('stopwords')"
 conda install -y -c conda-forge \
 	nodejs \
 	jupyter_contrib_nbextensions \
+	nbdime \
 	\
 	tensorboardx \
 	hyperopt \
