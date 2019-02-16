@@ -45,3 +45,4 @@ pip install plydata \
 	tqdm \
 	\
 	python-language-server \
+	ptpython

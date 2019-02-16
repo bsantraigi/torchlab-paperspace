@@ -15,7 +15,9 @@ RUN apt-get update -qq \
   && rm -rf /var/lib/apt/lists/*
 
 
-COPY install-python-packages.sh .
+WORKDIR /root
+COPY resources/install-python-packages.sh .
+COPY resources/ptpython-config.py .
 
 
 # Miniconda
@@ -41,6 +43,9 @@ RUN \
   && jupyter labextension install @jupyter-widgets/jupyterlab-manager \
   #
   && conda clean --all -y \
+  #
+  && rm -f install-python-packages.sh \
+  && mkdir ~/.ptpython && mv ptpython-config.py ~/.ptpython/config.py \
   "
 
 
