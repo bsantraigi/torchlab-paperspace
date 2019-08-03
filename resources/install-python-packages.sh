@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
-set -euxo pipefail
+set -euo pipefail
 
 conda install -y \
 	cython numpy scipy \
 	pandas \
 	scikit-learn scikit-image \
 	nltk \
-	tensorflow-gpu tensorboard \
 	\
 	jupyterlab ipywidgets \
 	\
@@ -15,6 +14,10 @@ conda install -y \
 
 python -c "import nltk; nltk.download('stopwords')"
 
+# torch
+conda install -y -c pytorch \
+	pytorch==1.1.0 torchvision ignite \
+
 
 # xgboost & tpot currently require py36
 conda install -y -c conda-forge \
@@ -22,25 +25,20 @@ conda install -y -c conda-forge \
 	jupyter_contrib_nbextensions \
 	nbdime \
 	\
-	tensorboardx \
+	tensorboard tensorboardx \
 	hyperopt \
 	\
-	xgboost \
-	tpot \
+	# xgboost \
+	# tpot \
 
-
-# torch
-conda install -y -c pytorch \
-	torchvision ignite \
 
 # fastai
-conda install -y -c fastai \
-	fastai
+# conda install -y -c fastai \
+# 	fastai
 
 #
 pip install plydata \
-	torchsummary torchtext \
-	sacred \
+	torchtext \
 	\
 	tqdm \
 	\

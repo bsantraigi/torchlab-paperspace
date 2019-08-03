@@ -22,17 +22,13 @@ COPY resources/ptpython-config.py .
 
 # Miniconda
 RUN \
-  curl -L https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh \
+  # curl -L https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh \
+  curl -L https://repo.continuum.io/miniconda/Miniconda3-4.6.14-Linux-x86_64.sh -o miniconda.sh \
   && bash miniconda.sh -b -p /usr/local/miniconda \
   && rm -f miniconda.sh \
   && echo 'export PATH="/usr/local/miniconda/bin:$PATH"' >> ~/.bashrc \
   && /bin/bash -c "\
   source ~/.bashrc \
-  #
-  # should be dropped when conda-forge packages are avail on 3.7
-  && conda create -n myenv python=3.6 -y \
-  && echo 'source activate myenv' >> ~/.bashrc \
-  && source activate myenv \
   #
   #
   && source install-python-packages.sh \
@@ -51,4 +47,4 @@ RUN \
 
 EXPOSE 8888 6006
 
-CMD ["/usr/local/miniconda/envs/myenv/bin/jupyter", "lab", "--ip", "0.0.0.0", "--no-browser", "--allow-root", "--NotebookApp.token=''"]
+CMD ["/usr/local/miniconda/bin/jupyter", "lab", "--ip", "0.0.0.0", "--no-browser", "--allow-root", "--NotebookApp.token=''"]

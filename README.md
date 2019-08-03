@@ -1,4 +1,4 @@
-# {PyTorch 1.0 & fastai & friends} + CUDA 9.2 + cuDNN 7.1.4
+# {PyTorch 1.1 & friends} + CUDA 10.0 + cuDNN 7.5.1
 ## Purpose
 Get a Jupyterlab up and running in seconds for interactive exploration (hence the data wrangling and visualization packages).
 
