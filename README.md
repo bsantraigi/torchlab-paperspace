@@ -12,12 +12,13 @@ Included packages (see `Dockerfile` for the full list):
   - miniconda3 w/ python 3.7
   - PyTorch 1.2.0
   - torchvision, torchtext, torchaudio
-  - gpytorch (botorch temporaritly removed)
+  - gpytorch, botorch, ax-platform
   - allennlp, fairseq, flair, parlAI
   - torch-geometric
   - syft
   - fastai (temporarily removed)
   - tf 1.14, tensorboard
+  - test-tube
 
 and the usual suspects:
 

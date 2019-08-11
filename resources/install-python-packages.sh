@@ -18,11 +18,9 @@ python -c "import nltk; nltk.download('stopwords')"
 conda install -y -c pytorch \
 	pytorch==1.2.0 ignite \
 	torchvision torchtext torchaudio \
-	# botorch
 
-pip install gpytorch
-conda install -y botorch -c pytorch
-
+conda install -y -c pytorch -c gpytorch botorch
+pip install ax-platform
 
 # xgboost & tpot currently require py36
 conda install -y -c conda-forge \
@@ -36,6 +34,16 @@ conda install -y -c conda-forge \
 	# xgboost \
 	# tpot \
 
+jupyter serverextension enable --py jupyterlab --sys-prefix \
+  && jupyter nbextension enable --py widgetsnbextension --sys-prefix \
+  && jupyter contrib nbextension install --user \
+  && jupyter labextension install @jupyter-widgets/jupyterlab-manager \
+  && jupyter labextension install @oriolmirosa/jupyterlab_materialdarker \
+
+conda install -y -c conda-forge black
+jupyter labextension install @ryantam626/jupyterlab_code_formatter
+conda install -y -c conda-forge jupyterlab_code_formatter
+jupyter serverextension enable --py jupyterlab_code_formatter
 
 # fastai
 # conda install -y -c fastai \
@@ -45,17 +53,20 @@ conda install -y -c conda-forge \
 pip install \
 	pytorch-transformers \
 	pyro-ppl allennlp flair \
-	# torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric \
 	fairseq \
-	syft
+	syft \
+	# torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric \
 
-#
+pip install \
+	test_tube \
+
 pip install plydata \
 	tqdm \
 	\
 	python-language-server \
 	ptpython \
+	faker babel
 
-git clone https://github.com/facebookresearch/ParlAI.git ~/ParlAI \
-	&& cd ~/ParlAI && python setup.py develop \
-	&& cd ~/
+git clone https://github.com/facebookresearch/ParlAI.git ${HOME}/ParlAI \
+	&& cd ${HOME}/ParlAI && python setup.py develop \
+	&& cd ${HOME}
