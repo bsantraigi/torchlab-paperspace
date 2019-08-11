@@ -7,7 +7,7 @@ RUN apt-get update -qq \
   #
   # python
   # && apt-get install -y python3-pip python3-tk \
-  && apt-get install -y curl \
+  && apt-get install -y curl git \
       build-essential   # gcc for xgboost \
   #
   # cleanup
@@ -30,6 +30,7 @@ RUN \
   && /bin/bash -c "\
   source ~/.bashrc \
   #
+  conda update -n base conda \
   #
   && source install-python-packages.sh \
   #
@@ -38,7 +39,10 @@ RUN \
   && jupyter nbextension enable --py widgetsnbextension --sys-prefix \
   && jupyter labextension install @jupyter-widgets/jupyterlab-manager \
   #
+  && echo 'cleaning caches...' \
   && conda clean --all -y \
+  && rm -rf ~/.cache/pip \
+  && echo 'cleaning caches done.' \
   #
   && rm -f install-python-packages.sh \
   && mkdir ~/.ptpython && mv ptpython-config.py ~/.ptpython/config.py \

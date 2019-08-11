@@ -16,7 +16,12 @@ python -c "import nltk; nltk.download('stopwords')"
 
 # torch
 conda install -y -c pytorch \
-	pytorch==1.1.0 torchvision ignite \
+	pytorch==1.2.0 ignite \
+	torchvision torchtext torchaudio \
+	# botorch
+
+pip install gpytorch
+conda install -y botorch -c pytorch
 
 
 # xgboost & tpot currently require py36
@@ -25,7 +30,7 @@ conda install -y -c conda-forge \
 	jupyter_contrib_nbextensions \
 	nbdime \
 	\
-	tensorboard tensorboardx \
+	tensorboard \
 	hyperopt \
 	\
 	# xgboost \
@@ -37,10 +42,20 @@ conda install -y -c conda-forge \
 # 	fastai
 
 #
+pip install \
+	pytorch-transformers \
+	pyro-ppl allennlp flair \
+	# torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric \
+	fairseq \
+	syft
+
+#
 pip install plydata \
-	torchtext \
-	\
 	tqdm \
 	\
 	python-language-server \
-	ptpython
+	ptpython \
+
+git clone https://github.com/facebookresearch/ParlAI.git ~/ParlAI \
+	&& cd ~/ParlAI && python setup.py develop \
+	&& cd ~/
