@@ -1,4 +1,4 @@
-# {PyTorch 1.2.0 & friends} + CUDA 10.0 + cuDNN 7.5.1
+# {PyTorch 1.2.0 & friends} + CUDA 10.0 + cuDNN 7.6.2
 
 ## Purpose
 

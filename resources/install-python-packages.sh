@@ -7,8 +7,6 @@ conda install -y \
 	scikit-learn scikit-image \
 	nltk \
 	\
-	jupyterlab ipywidgets \
-	\
 	matplotlib seaborn \
 
 
@@ -16,7 +14,7 @@ python -c "import nltk; nltk.download('stopwords')"
 
 # torch
 conda install -y -c pytorch \
-	pytorch==1.2.0 ignite \
+	pytorch==1.2.0 cudatoolkit=9.2 ignite \
 	torchvision torchtext torchaudio \
 
 conda install -y -c pytorch -c gpytorch botorch
@@ -24,9 +22,10 @@ pip install ax-platform
 
 # xgboost & tpot currently require py36
 conda install -y -c conda-forge \
-	nodejs \
+	jupyterlab ipywidgets \
+	\
 	jupyter_contrib_nbextensions \
-	nbdime \
+	nbdime black \
 	\
 	tensorboard \
 	hyperopt \
@@ -36,14 +35,14 @@ conda install -y -c conda-forge \
 
 jupyter serverextension enable --py jupyterlab --sys-prefix \
   && jupyter nbextension enable --py widgetsnbextension --sys-prefix \
-  && jupyter contrib nbextension install --user \
+  && jupyter contrib nbextension install --sys-prefix \
   && jupyter labextension install @jupyter-widgets/jupyterlab-manager \
   && jupyter labextension install @oriolmirosa/jupyterlab_materialdarker \
+  && jupyter labextension install @ryantam626/jupyterlab_code_formatter
 
-conda install -y -c conda-forge black
-jupyter labextension install @ryantam626/jupyterlab_code_formatter
-conda install -y -c conda-forge jupyterlab_code_formatter
-jupyter serverextension enable --py jupyterlab_code_formatter
+# conda install -y -c conda-forge jupyterlab_code_formatter
+pip install jupyterlab_code_formatter
+jupyter serverextension enable --py jupyterlab_code_formatter --sys-prefix
 
 # fastai
 # conda install -y -c fastai \
