@@ -14,7 +14,7 @@ python -c "import nltk; nltk.download('stopwords')"
 
 # torch
 conda install -y -c pytorch \
-	pytorch==1.2.0 cudatoolkit=9.2 ignite \
+	pytorch==1.2.0 cudatoolkit=10.0 ignite \
 	torchvision torchtext torchaudio \
 
 conda install -y -c pytorch -c gpytorch botorch
@@ -22,6 +22,7 @@ pip install ax-platform
 
 # xgboost & tpot currently require py36
 conda install -y -c conda-forge \
+	nodejs \
 	jupyterlab ipywidgets \
 	\
 	jupyter_contrib_nbextensions \
@@ -45,19 +46,17 @@ pip install jupyterlab_code_formatter
 jupyter serverextension enable --py jupyterlab_code_formatter --sys-prefix
 
 # fastai
-# conda install -y -c fastai \
-# 	fastai
+conda install -y -c fastai \
+	fastai
 
 #
 pip install \
 	pytorch-transformers \
-	pyro-ppl allennlp flair \
+	pyro-ppl \
+	allennlp flair \
 	fairseq \
-	syft \
+	# syft \
 	# torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric \
-
-pip install \
-	test_tube \
 
 pip install plydata \
 	tqdm \

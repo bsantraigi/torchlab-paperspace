@@ -15,10 +15,9 @@ Included packages (see `Dockerfile` for the full list):
   - gpytorch, botorch, ax-platform
   - allennlp, fairseq, flair, parlAI
   - torch-geometric
-  - syft
-  - fastai (temporarily removed)
+  - syft (temporarily removed)
+  - fastai
   - tf 1.14, tensorboard
-  - test-tube
 
 and the usual suspects:
 
