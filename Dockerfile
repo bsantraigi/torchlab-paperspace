@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM ubuntu:18.04
 MAINTAINER bosr <romain.bossart@fastmail.com>
 
 RUN apt-get update -qq \
@@ -9,6 +9,8 @@ RUN apt-get update -qq \
   # && apt-get install -y python3-pip python3-tk \
   && apt-get install -y sudo curl git \
       build-essential \
+      clang libpython-dev libblocksruntime-dev \
+      libpython3.6 libxml2 \
   #
   # cleanup
   && apt-get clean \
@@ -20,6 +22,7 @@ ENV LANG=C.UTF-8 \
     NB_UID=1000 \
     NB_GID=100 \
     HOME=/home/mluser \
+    S4TF_HOME=/home/mluser/s4tf \
     TENSORBOARD_LOGDIR=/data/tensorboard_logdir
 
 ADD fix-permissions /usr/bin/fix-permissions
@@ -36,6 +39,14 @@ RUN \
   && chown -R $NB_USER:$NB_USER /data
 
 WORKDIR /home/$NB_USER
+
+# SwiftAI
+RUN \
+  mkdir $S4TF_HOME && cd $S4TF_HOME \
+  && curl https://storage.googleapis.com/swift-tensorflow-artifacts/releases/v0.6/rc2/deduped/swift-tensorflow-RELEASE-0.6-cuda10.1-cudnn7-ubuntu18.04.tar.gz | tar xz \
+  && echo export PATH="$S4TF_HOME/usr/bin:$PATH" >> $HOME/.bashrc \
+  && cd ..
+
 COPY resources/install-python-packages.sh .
 COPY resources/ptpython-config.py .
 

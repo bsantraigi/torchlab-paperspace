@@ -46,6 +46,14 @@ jupyter serverextension enable --py jupyterlab --sys-prefix \
 pip install jupyterlab_code_formatter
 jupyter serverextension enable --py jupyterlab_code_formatter --sys-prefix
 
+# SwiftAI
+git clone https://github.com/google/swift-jupyter
+cd swift-jupyter
+python register.py --sys-prefix --swift-python-use-conda --use-conda-shared-libs --swift-toolchain $HOME/s4tf
+cd ..
+
+# git clone https://github.com/fastai/swiftai
+
 # fastai
 conda install -y -c fastai \
 	fastai
@@ -66,6 +74,6 @@ pip install plydata \
 	ptpython \
 	faker babel
 
-git clone https://github.com/facebookresearch/ParlAI.git ${HOME}/ParlAI \
-	&& cd ${HOME}/ParlAI && python setup.py develop \
-	&& cd ${HOME}
+# git clone https://github.com/facebookresearch/ParlAI.git ${HOME}/ParlAI \
+# 	&& cd ${HOME}/ParlAI && python setup.py develop \
+# 	&& cd ${HOME}
