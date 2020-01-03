@@ -1,5 +1,8 @@
 FROM ubuntu:18.04
-MAINTAINER bosr <romain.bossart@fastmail.com>
+
+LABEL maintainer="bosr <romain.bossart@fastmail.com>"
+LABEL description="🐳 Docker environment for Swift GPU Accelerated Machine Learning"
+LABEL url="https://github.com/bosr/docker-pytorch"
 
 RUN apt-get update -qq \
   && apt-get install -y apt-utils \
@@ -23,7 +26,9 @@ ENV LANG=C.UTF-8 \
     NB_GID=100 \
     HOME=/home/mluser \
     S4TF_HOME=/home/mluser/s4tf \
+    S4TF_URL=https://storage.googleapis.com/swift-tensorflow-artifacts/nightlies/latest/swift-tensorflow-DEVELOPMENT-cuda10.1-cudnn7-ubuntu18.04.tar.gz \
     TENSORBOARD_LOGDIR=/data/tensorboard_logdir
+# latest stable: https://storage.googleapis.com/swift-tensorflow-artifacts/nightlies/latest/swift-tensorflow-DEVELOPMENT-cuda10.1-cudnn7-ubuntu18.04.tar.gz
 
 ADD fix-permissions /usr/bin/fix-permissions
 
@@ -43,7 +48,7 @@ WORKDIR /home/$NB_USER
 # SwiftAI
 RUN \
   mkdir $S4TF_HOME && cd $S4TF_HOME \
-  && curl https://storage.googleapis.com/swift-tensorflow-artifacts/releases/v0.6/rc2/deduped/swift-tensorflow-RELEASE-0.6-cuda10.1-cudnn7-ubuntu18.04.tar.gz | tar xz \
+  && curl $S4TF_URL | tar xz \
   && echo export PATH="$S4TF_HOME/usr/bin:$PATH" >> $HOME/.bashrc \
   && cd ..
 
