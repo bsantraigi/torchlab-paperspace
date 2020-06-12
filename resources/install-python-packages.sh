@@ -14,7 +14,7 @@ python -c "import nltk; nltk.download('stopwords')"
 
 # torch
 conda install -y -c pytorch \
-	pytorch==1.4.0 cudatoolkit=10.1 ignite \
+	pytorch==1.5.0 cudatoolkit=10.1 ignite \
 	torchvision torchtext torchaudio \
 
 conda install -y -c pytorch -c gpytorch botorch
@@ -60,7 +60,7 @@ conda install -y -c fastai \
 
 #
 pip install \
-	pytorch-transformers \
+	transformers \
 	pyro-ppl \
 	allennlp flair \
 	fairseq \
