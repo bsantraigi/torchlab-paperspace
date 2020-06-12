@@ -27,9 +27,11 @@ ENV LANG=C.UTF-8 \
     NB_GID=100 \
     HOME=/home/mluser \
     S4TF_HOME=/home/mluser/s4tf \
-    S4TF_URL=https://storage.googleapis.com/swift-tensorflow-artifacts/nightlies/latest/swift-tensorflow-DEVELOPMENT-cuda10.1-cudnn7-ubuntu18.04.tar.gz \
+    S4TF_URL=https://storage.googleapis.com/swift-tensorflow-artifacts/releases/v0.9/rc1/swift-tensorflow-RELEASE-0.9-cuda10.1-cudnn7-ubuntu18.04.tar.gz \
     TENSORBOARD_LOGDIR=/data/tensorboard_logdir
-# latest stable: https://storage.googleapis.com/swift-tensorflow-artifacts/nightlies/latest/swift-tensorflow-DEVELOPMENT-cuda10.1-cudnn7-ubuntu18.04.tar.gz
+
+# latest stable: https://storage.googleapis.com/swift-tensorflow-artifacts/releases/v0.7/rc2/swift-tensorflow-RELEASE-0.7-cuda10.1-cudnn7-ubuntu18.04.tar.gz
+# nightly: https://storage.googleapis.com/swift-tensorflow-artifacts/releases/v0.9/rc1/swift-tensorflow-RELEASE-0.9-cuda10.1-cudnn7-ubuntu18.04.tar.gz
 
 ADD fix-permissions /usr/bin/fix-permissions
 
