@@ -61,6 +61,9 @@ conda install -y -c fastai \
 #
 pip install \
 	transformers \
+	mosestokenizer \
+	sacremoses \
+	spacy \
 	pyro-ppl \
 	allennlp flair \
 	fairseq \
