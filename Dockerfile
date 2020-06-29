@@ -74,7 +74,7 @@ RUN \
 
 USER $NB_USER
 
-RUN /usr/local/miniconda/conda init
+RUN /usr/local/miniconda/bin/conda init
 
 WORKDIR /storage
 
