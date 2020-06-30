@@ -25,8 +25,8 @@ ENV LANG=C.UTF-8 \
     SHELL=/bin/bash \
     NB_USER=bishal \
     NB_UID=1000 \
-    NB_GID=100 \
-    HOME=/home/$NB_USER
+    NB_GID=100
+ENV HOME=/home/$NB_USER
 
 # latest stable: https://storage.googleapis.com/swift-tensorflow-artifacts/releases/v0.7/rc2/swift-tensorflow-RELEASE-0.7-cuda10.1-cudnn7-ubuntu18.04.tar.gz
 # nightly: https://storage.googleapis.com/swift-tensorflow-artifacts/releases/v0.9/rc1/swift-tensorflow-RELEASE-0.9-cuda10.1-cudnn7-ubuntu18.04.tar.gz
@@ -72,13 +72,14 @@ RUN \
   && chown -R $NB_USER:$NB_USER /usr/local/miniconda \
   "
 
-USER $NB_USER
+COPY run.sh /run.sh
+RUN chown $NB_USER:$NB_USER /run.sh
+RUN chmod +x /run.sh
 
-RUN /usr/local/miniconda/bin/conda init
+USER $NB_USER
 
 WORKDIR /storage
 
 EXPOSE 8888
 
-# jupyter lab --ip 0.0.0.0 --no-browser --allow-root
-CMD ["/usr/local/miniconda/bin/jupyter", "lab", "--ip", "0.0.0.0", "--no-browser", "--allow-root"]
+CMD ["/run.sh"]
