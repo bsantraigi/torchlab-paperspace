@@ -1,25 +1,18 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-conda install -y \
-	cython numpy \
-	pandas \
-	scikit-learn \
-	nltk \
-	matplotlib \
+conda install -y cython numpy pandas scikit-learn nltk matplotlib
 
 
 python -c "import nltk; nltk.download('stopwords')"
 
 # latest torch
-conda install -y -c pytorch \
-	pytorch cudatoolkit=10.1 \
-	torchvision \
+conda install -y -c pytorch pytorch cudatoolkit=10.1 torchvision
 
 # conda install -y -c pytorch -c gpytorch botorch
 # pip install ax-platform
 
-conda install -c conda-forge jupyterlab
+conda install -c conda-forge jupyterlab ipywidgets
 
 jupyter serverextension enable --py jupyterlab --sys-prefix \
   && jupyter nbextension enable --py widgetsnbextension --sys-prefix \
@@ -38,14 +31,10 @@ jupyter serverextension enable --py jupyterlab_code_formatter --sys-prefix
 # git clone https://github.com/fastai/swiftai
 
 # fastai
-conda install -y -c fastai \
-	fastai
+conda install -y -c fastai fastai
 
 #
-pip install \
-	transformers \
-	mosestokenizer \
-	sacremoses \
+pip install transformers mosestokenizer sacremoses blingfire
 # 	spacy \
 # 	pyro-ppl \
 # 	allennlp flair \
@@ -53,8 +42,7 @@ pip install \
 	# syft \
 	# torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric \
 
-pip install plydata \
-	tqdm \
+pip install plydata tqdm
 # 	python-language-server \
 # 	ptpython \
 # 	faker babel

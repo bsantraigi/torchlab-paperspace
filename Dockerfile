@@ -83,17 +83,21 @@ RUN \
   && rm -f install-python-packages.sh \
   #
   && chown -R $NB_USER:$NB_USER $HOME \
-  && chown -R $NB_USER:$NB_USER /usr/local/miniconda \
   "
+
+# RUN /bin/bash -c "chown -R $NB_USER:$NB_USER /usr/local/miniconda"
 
 COPY run.sh /run.sh
 RUN chown $NB_USER:$NB_USER /run.sh
 RUN chmod +x /run.sh
 
-USER $NB_USER
+# USER $NB_USER
 
 WORKDIR /notebooks
 
 EXPOSE 8888
 
-CMD ["/run.sh"]
+# Start command for paperspace
+# /usr/local/miniconda/bin/jupyter lab --ip=0.0.0.0 --no-browser --allow-root
+# CMD ["/run.sh"]
+CMD /usr/local/miniconda/bin/jupyter lab --ip=0.0.0.0 --no-browser --allow-root
