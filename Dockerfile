@@ -23,7 +23,7 @@ RUN apt-get update -qq \
 
 ENV LANG=C.UTF-8 \
     SHELL=/bin/bash \
-    NB_USER=bishal \
+    NB_USER=tlab \
     NB_UID=1000 \
     NB_GID=100
 ENV HOME=/home/$NB_USER
@@ -82,4 +82,4 @@ WORKDIR /storage
 
 EXPOSE 8888
 
-CMD ["/run.sh"]
+# CMD ["/run.sh"]

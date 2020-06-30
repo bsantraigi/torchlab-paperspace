@@ -20,6 +20,8 @@ conda install -y -c pytorch \
 conda install -y -c pytorch -c gpytorch botorch
 pip install ax-platform
 
+conda install -c conda-forge jupyterlab
+
 jupyter serverextension enable --py jupyterlab --sys-prefix \
   && jupyter nbextension enable --py widgetsnbextension --sys-prefix \
   && jupyter contrib nbextension install --sys-prefix \
