@@ -96,4 +96,4 @@ WORKDIR /notebooks
 
 EXPOSE 8888
 
-# CMD ["/run.sh"]
+CMD ["/run.sh"]

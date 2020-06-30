@@ -2,23 +2,22 @@
 set -euo pipefail
 
 conda install -y \
-	cython numpy scipy \
+	cython numpy \
 	pandas \
-	scikit-learn scikit-image \
+	scikit-learn \
 	nltk \
-	\
-	matplotlib seaborn \
+	matplotlib \
 
 
 python -c "import nltk; nltk.download('stopwords')"
 
 # latest torch
 conda install -y -c pytorch \
-	pytorch cudatoolkit=10.1 ignite \
-	torchvision torchtext torchaudio \
+	pytorch cudatoolkit=10.1 \
+	torchvision \
 
-conda install -y -c pytorch -c gpytorch botorch
-pip install ax-platform
+# conda install -y -c pytorch -c gpytorch botorch
+# pip install ax-platform
 
 conda install -c conda-forge jupyterlab
 
@@ -29,6 +28,8 @@ jupyter serverextension enable --py jupyterlab --sys-prefix \
   && jupyter labextension install @oriolmirosa/jupyterlab_materialdarker \
   && jupyter labextension install @ryantam626/jupyterlab_code_formatter \
   && jupyter labextension install @aquirdturtle/collapsible_headings
+
+jupyter labextension install @jupyterlab/toc
 
 # conda install -y -c conda-forge jupyterlab_code_formatter
 pip install jupyterlab_code_formatter
@@ -45,19 +46,18 @@ pip install \
 	transformers \
 	mosestokenizer \
 	sacremoses \
-	spacy \
-	pyro-ppl \
-	allennlp flair \
-	fairseq \
+# 	spacy \
+# 	pyro-ppl \
+# 	allennlp flair \
+# 	fairseq \
 	# syft \
 	# torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric \
 
 pip install plydata \
 	tqdm \
-	\
-	python-language-server \
-	ptpython \
-	faker babel
+# 	python-language-server \
+# 	ptpython \
+# 	faker babel
 
 # git clone https://github.com/facebookresearch/ParlAI.git ${HOME}/ParlAI \
 # 	&& cd ${HOME}/ParlAI && python setup.py develop \
