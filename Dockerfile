@@ -33,12 +33,26 @@ ENV HOME=/home/$NB_USER
 
 ADD fix-permissions /usr/bin/fix-permissions
 
+# useradd [...] -p"$(python -c "import crypt; print crypt.crypt(\"foo\", \"\$6\$$(</dev/urandom tr -dc 'a-zA-Z0-9' | head -c 32)\$\")")" [...]
+# useradd -d /home/dummy -g idiots -m -p $(echo "P4sSw0rD" | openssl passwd -1 -stdin) dummy
 RUN \
   #
   # create user
-  groupadd $NB_USER && useradd -d $HOME -ms /bin/bash -g $NB_GID -G sudo,video -p $NB_USER $NB_USER \
+  groupadd $NB_USER && useradd -d $HOME -ms /bin/bash -g $NB_GID -G sudo,video \
+  -p $(echo "pass" | openssl passwd -1 -stdin) \
+  $NB_USER \
   && chmod g+w /etc/passwd /etc/group \
   && chown -R $NB_USER:$NB_USER /usr/local
+  
+RUN \
+  #
+  # paperspace bug!
+  useradd -d /home/bishal -ms /bin/bash -G sudo,video -p $(echo "pass" | openssl passwd -1 -stdin) bishal \
+  && chmod g+w /etc/passwd /etc/group \
+  && chown -R bishal:bishal /usr/local
+
+RUN echo "tlab ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+RUN echo "bishal ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 WORKDIR $HOME
 
@@ -78,7 +92,7 @@ RUN chmod +x /run.sh
 
 USER $NB_USER
 
-WORKDIR /storage
+WORKDIR /notebooks
 
 EXPOSE 8888
 
